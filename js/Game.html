@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Serious Game - Malawi</title>
+<script src="./main.js"></script>
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<h1>Serious Game: Day 1</h1><br>
+<img src="./day1.png"
+     alt="hydrograph for day one">
+<p>Budget: $120 </p>
+<p>Damage and Casualty Prevention:
+  Check the boxes of the responses that you feel best help the community at this stage.</p>
+<label><input type="checkbox" value="0">Do Nothing ($0)</label><br>
+<label><input type="checkbox" value="10">Preposition ($10)</label><br>
+<label><input type="checkbox" value="10">Place Sandbags ($10)</label><br>
+<label><input type="checkbox" value="5">Alert Community ($5)</label><br>
+<label><input type="checkbox" value="60">Evacuation ($60)</label><br>
+<br>
+<button onclick="calculate()">Calculate</button>
+<p>Result: <span id="result"></span></p>
+<button onclick="nextDay()">Next Day</button>
+</body>
+</html>
