@@ -2,44 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Final Results</title>
-  <link rel="stylesheet" href="css/main.css">
+  <title>Serious Game - Malawi</title>
+  <script src="/static/js/main.js"></script>
+  <link rel="stylesheet" href="/static/css/main.css">
   <style>
-  table {
-    border-collapse: collapse;
-  }
+    table {
+      border-collapse: collapse;
+    }
 
-  th, td {
-    border: 1px solid black;
-    padding: 5px;
-  }
+    th, td {
+      border: 1px solid black;
+      padding: 5px;
+    }
     th{
-    background-color: #b3d4fc;
-  }
+      background-color: #b3d4fc;
+    }
   </style>
-  <script src="js/main.js"></script>
 </head>
-
-<body onload="loadCheckboxTable()">
+<body>
   <header>
     <nav>
       <ul>
         <li><a href="index.html">Rules</a></li>
-        <li><a href="Game.html">Play</a></li>
       </ul>
     </nav>
   </header>
 
-
-<h1>Final Results: 100-year Flood!!</h1>
-
-<img src="js/day_0.png"
-     alt="hydrograph for day of event"
-id="100yr">
-
-<h2>Cost of Actions Taken: </h2>
-<p>These were the actions you decided to take throughout the decision-making period. </p>
-<table id="resultTable"><tr>
+<h1>Serious Game: 10 days before predicted flood event.</h1><br>
+<img src="static/img/day_10.png"
+     alt="Hydrograph predicting a two-year return period in ten days based on the high resolution forecast trend line.">
+<p>Damage and Casualty Prevention:
+  Check the boxes of the responses that you feel best help the community based on today's forecast.</p>
+<!-- use this table for the game instead of the old one -->
+<table id="checkboxTable">
+    <tr>
         <th>Days of Anticipation</th>
         <th>10 Days</th>
         <th>9 Days</th>
@@ -55,19 +51,19 @@ id="100yr">
     </tr>
     <tr>
         <th>Prepositioning</th>
-        <td><label><input type="checkbox" value="25000" id="10-P" onclick="handleCheckboxSelections()">$25,000</label>
+        <td><label><input type="checkbox" value="25000" id="10-P" onchange="handleCheckboxSelections()">$25,000</label>
         </td>
-        <td><label><input type="checkbox" value="30000" id="9-P" onclick="handleCheckboxSelections()">$30,000</label>
+        <td><label><input type="checkbox" value="30000" id="9-P" onchange="handleCheckboxSelections()">$30,000</label>
         </td>
-        <td><label><input type="checkbox" value="35000" id="8-P" onclick="handleCheckboxSelections()">$35,000</label>
+        <td><label><input type="checkbox" value="35000" id="8-P" onchange="handleCheckboxSelections()">$35,000</label>
         </td>
-        <td><label><input type="checkbox" value="37500" id="7-P" onclick="handleCheckboxSelections()">$37,500</label>
+        <td><label><input type="checkbox" value="37500" id="7-P" onchange="handleCheckboxSelections()">$37,500</label>
         </td>
-        <td><label><input type="checkbox" value="40000" id="6-P" onclick="handleCheckboxSelections()">$40,000</label>
+        <td><label><input type="checkbox" value="40000" id="6-P" onchange="handleCheckboxSelections()">$40,000</label>
         </td>
-        <td><label><input type="checkbox" value="45000" id="5-P" onclick="handleCheckboxSelections()">$45,000</label>
+        <td><label><input type="checkbox" value="45000" id="5-P" onchange="handleCheckboxSelections()">$45,000</label>
         </td>
-        <td><label><input type="checkbox" value="50000" id="4-P" onclick="handleCheckboxSelections()">$50,000</label>
+        <td><label><input type="checkbox" value="50000" id="4-P" onchange="handleCheckboxSelections()">$50,000</label>
         </td>
         <td><label>-</label></td>
         <td><label>-</label></td>
@@ -159,83 +155,10 @@ id="100yr">
       <td></td>
       <td></td>
         <td id="overallTotal"></td>
-    </tr></table>
-
-<h2>Cost of Damage: </h2>
-<p>This table shows the estimated expenses caused by damages according to each return period.</p>
-<table id="damageTable">
-  <tr>
-    <th>Flood Level</th>
-    <th>No Flooding</th>
-    <th>2-Year</th>
-    <th>25-Year</th>
-    <th>100-Year</th>
-  </tr>
-  <tr>
-    <th>Damage Costs</th>
-    <td>$0.00</td>
-    <td>$244,520</td>
-    <td>$48,504,460</td>
-    <td>$81,397,990</td>
-  </tr>
+    </tr>
 </table>
 
-<h2>Benefits of Each Protective Measure:</h2>
-<p>This table breaks down the money that is saved if a specific action was taken based on the resulting flood damages.</p>
-<table id="benefitsTable">
-  <tr>
-    <th>Action</th>
-    <th>2-Year</th>
-    <th>25-Year</th>
-    <th>100-Year</th>
-  </tr>
-  <tr>
-    <th>Prepositioning of Resources</th>
-    <td>$0.00</td>
-    <td>$7,000,000</td>
-    <td>$14,000,000</td>
-  </tr>
-  <tr>
-    <th>Placement of Sandbags</th>
-    <td>$0.00</td>
-    <td>$6,500,000</td>
-    <td>$13,000,000</td>
-  </tr>
-  <tr>
-    <th>Alerting the Public</th>
-    <td>$0.00</td>
-    <td>$6,000,000</td>
-    <td>$12,000,000</td>
-  </tr>
-  <tr>
-    <th>Evacuation</th>
-    <td>$0.00</td>
-    <td>$10,000,000</td>
-    <td>$20,000,000</td>
-  </tr>
-</table>
 <br>
-<table id="calculator">
-  <tr>
-    <th>Cost of Protection</th>
-    <th></th>
-    <th>Cost of Damage</th>
-    <th></th>
-    <th>Benefits of Protection</th>
-    <th></th>
-    <th>Net Cost of Damage</th>
-  </tr>
-  <tr>
-    <td id="costOfProtection"></td>
-    <th></th>
-    <td><label><input type="number" id="costOfDamage"></label></td>
-    <th>-</th>
-    <td><label><input type="number" id="benefitsOfProtection"></label></td>
-    <th>=</th>
-    <td id="netCostOfDamage"></td>
-  </tr>
-</table><br>
-<button onclick="calculator()">Calculate</button>
-
+<button onclick="nextDay()">Next Day</button>
 </body>
 </html>

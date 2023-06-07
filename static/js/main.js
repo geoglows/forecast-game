@@ -28,9 +28,9 @@ function loadCheckboxTable() {
 // Function that starts the game
 function startGame() {
   let startGameButton = document.querySelector('button:first-of-type');
-// go to Game.html on click
+// go to game.html on click
   startGameButton.addEventListener('click', function() {
-    window.location.href = '../Game.html';
+    window.location.href = '../../game.html';
   });
 
 }
@@ -49,10 +49,10 @@ function nextDay() {
       'Cancel to play again.');
     if (confirmation) {
       // Proceed to the results page
-      window.location.href = 'Results.html';
+      window.location.href = 'results.html';
       window.onload = function(){loadCheckboxTable()};
     } else {
-      window.location.href = 'Game.html';
+      window.location.href = 'game.html';
     }
   } else {
     // lock the checkboxes that have already been checked
@@ -69,7 +69,7 @@ function nextDay() {
       let h1 = document.querySelector('h1');
       currentDay--;
       localStorage.setItem('currentDay', currentDay);
-      img.src = 'js/day_' + currentDay + '.png';
+      img.src = '/static/img/day_' + currentDay + '.png';
       img.alt = 'Forecasted Streamflow for ' + currentDay + ' days before event';
       h1.textContent = 'Serious Game: ' + currentDay + ' Days Before Predicted Flood Event';
 
@@ -200,7 +200,7 @@ function calculateFinal(floodlevel) {
     }
 }
 
-// function for the calculator on the Results.html page
+// function for the calculator on the results.html page
 function calculator(){
          let netDamage = document.getElementById("costOfDamage").value - document.getElementById("benefitsOfProtection").value;
             document.getElementById("netCostOfDamage").textContent = "$" + netDamage;
