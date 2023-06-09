@@ -2,38 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Serious Game - Malawi</title>
+  <title>GEOGloWS Forecast Game</title>
   <script src="/static/js/main.js"></script>
   <link rel="stylesheet" href="/static/css/main.css">
-  <style>
-    table {
-      border-collapse: collapse;
-    }
-
-    th, td {
-      border: 1px solid black;
-      padding: 5px;
-    }
-    th{
-      background-color: #b3d4fc;
-    }
-  </style>
 </head>
 <body>
+<div class="body-container">
+    <div class="navbar">
   <header>
     <nav>
       <ul>
         <li><a href="index.html">Rules</a></li>
       </ul>
     </nav>
-  </header>
+  </header></div>
 
 <h1>Serious Game: 10 days before predicted flood event.</h1><br>
-<img src="static/img/day_10.png"
+<img src="static/img/round1/day_10.png"
      alt="Hydrograph predicting a two-year return period in ten days based on the high resolution forecast trend line.">
 <p>Damage and Casualty Prevention:
   Check the boxes of the responses that you feel best help the community based on today's forecast.</p>
-<!-- use this table for the game instead of the old one -->
 <table id="checkboxTable">
     <tr>
         <th>Days of Anticipation</th>
@@ -51,23 +39,23 @@
     </tr>
     <tr>
         <th>Prepositioning</th>
-        <td><label><input type="checkbox" value="25000" id="10-P" onchange="handleCheckboxSelections()">$25,000</label>
+        <td><label><input type="checkbox" value="25000" id="10-P" onclick="handleCheckboxSelections()">$25,000</label>
         </td>
-        <td><label><input type="checkbox" value="30000" id="9-P" onchange="handleCheckboxSelections()">$30,000</label>
+        <td><label><input type="checkbox" value="30000" id="9-P" onclick="handleCheckboxSelections()">$30,000</label>
         </td>
-        <td><label><input type="checkbox" value="35000" id="8-P" onchange="handleCheckboxSelections()">$35,000</label>
+        <td><label><input type="checkbox" value="35000" id="8-P" onclick="handleCheckboxSelections()">$35,000</label>
         </td>
-        <td><label><input type="checkbox" value="37500" id="7-P" onchange="handleCheckboxSelections()">$37,500</label>
+        <td><label><input type="checkbox" value="37500" id="7-P" onclick="handleCheckboxSelections()">$37,500</label>
         </td>
-        <td><label><input type="checkbox" value="40000" id="6-P" onchange="handleCheckboxSelections()">$40,000</label>
+        <td><label><input type="checkbox" value="40000" id="6-P" onclick="handleCheckboxSelections()">$40,000</label>
         </td>
-        <td><label><input type="checkbox" value="45000" id="5-P" onchange="handleCheckboxSelections()">$45,000</label>
+        <td><label><input type="checkbox" value="45000" id="5-P" onclick="handleCheckboxSelections()">$45,000</label>
         </td>
-        <td><label><input type="checkbox" value="50000" id="4-P" onchange="handleCheckboxSelections()">$50,000</label>
+        <td><label><input type="checkbox" value="50000" id="4-P" onclick="handleCheckboxSelections()">$50,000</label>
         </td>
-        <td><label>-</label></td>
-        <td><label>-</label></td>
-        <td><label>-</label></td>
+        <th><label>-</label></th>
+        <th><label>-</label></th>
+        <th><label>-</label></th>
         <td id="row1Total"></td>
     </tr>
     <tr>
@@ -88,8 +76,8 @@
         </td>
         <td><label><input type="checkbox" value="65000" id="3-S" onclick="handleCheckboxSelections()">$65,000</label>
         </td>
-        <td><label>-</label></td>
-        <td><label>-</label></td>
+        <th><label>-</label></th>
+        <th><label>-</label></th>
         <td id="row2Total"></td>
     </tr>
     <tr>
@@ -155,10 +143,9 @@
       <td></td>
       <td></td>
         <td id="overallTotal"></td>
-    </tr>
-</table>
-
+    </tr></table>
 <br>
-<button onclick="nextDay()">Next Day</button>
+<button onclick="nextDay(2)">Next Day</button>
+    </div>
 </body>
 </html>

@@ -25,21 +25,11 @@ function loadCheckboxTable() {
   document.getElementById("costOfProtection").textContent = document.getElementById("overallTotal").textContent;
 }
 
-// Function that starts the game
-function startGame() {
-  let startGameButton = document.querySelector('button:first-of-type');
-// go to game.html on click
-  startGameButton.addEventListener('click', function() {
-    window.location.href = '../../game.html';
-  });
-
-}
-
 // variable to keep track of the current day
 let currentDay = 10;
 
 // this function helps the game progress and determines when the game is over
-function nextDay() {
+function nextDay(round) {
   // If the current day is greater than 1, go to the next day
   if (currentDay === 1) {// save the table to local storage as resultTable
     saveCheckboxTable();
@@ -49,10 +39,10 @@ function nextDay() {
       'Cancel to play again.');
     if (confirmation) {
       // Proceed to the results page
-      window.location.href = 'results.html';
+      window.location.href = 'results'+round+'.html';
       window.onload = function(){loadCheckboxTable()};
     } else {
-      window.location.href = 'game.html';
+      window.location.href = 'round'+ round +'.html';
     }
   } else {
     // lock the checkboxes that have already been checked
@@ -69,9 +59,9 @@ function nextDay() {
       let h1 = document.querySelector('h1');
       currentDay--;
       localStorage.setItem('currentDay', currentDay);
-      img.src = '/static/img/day_' + currentDay + '.png';
       img.alt = 'Forecasted Streamflow for ' + currentDay + ' days before event';
-      h1.textContent = 'Serious Game: ' + currentDay + ' Days Before Predicted Flood Event';
+      h1.textContent = 'Forecast Game: ' + currentDay + ' Days Before Predicted Flood Event';
+      img.src = '/static/img/round'+ round +'/day_' + currentDay + '.png';
 
       calculateTotal("checkboxTable");
       handleCheckboxSelections();
@@ -120,88 +110,18 @@ function handleCheckboxSelections() {
 }
 
 // function for final calculations on Result.html page
-function calculateFinal(floodlevel) {
+function calculateFinal() {
     calculateTotal( "resultTable");
-      // Get the checked checkboxes in resultTable
-      if (floodlevel === "100yr"){
-      const checkboxes = document.querySelectorAll('#resultTable input[type="checkbox"]:checked');
-      let damageCost = 81397990;
-      let dCost = 81397990;
-      let P100yr = 14000000;
-      let S100yr = 13000000;
-      let A100yr = 12000000;
-      let E100yr = 20000000;
-      let ProtectionCost = 0;
-      document.getElementById("costOfDamage").textContent = "$" + dCost;
-      checkboxes.forEach((checkbox) => {
-        const checkboxId = checkbox.id;
-        const letter = checkboxId.split('-')[1]; // Extract the letter from the checkbox ID
-        switch (letter) {
-          case 'P':
-            ProtectionCost += P100yr;
-            break;
-          case 'S':
-            ProtectionCost += S100yr;
-            break;
-          case 'A':
-            ProtectionCost += A100yr;
-            break;
-          case 'E':
-            ProtectionCost += E100yr;
-            break;
-          default:
-            break;
-        }
-      });
-      damageCost = damageCost - ProtectionCost;
-        // displays the calculated damage cost in netDamageCost and ProtectionCost in calculator
-        document.getElementById("netDamageCost").textContent = "$" + damageCost;
-        document.getElementById("benefitsOfProtection").textContent = "$" + ProtectionCost;
-    } else if (floodlevel === "25yr"){
-      const checkboxes = document.querySelectorAll('#resultTable input[type="checkbox"]:checked');
-      let damageCost = 48504460;
-      let dCost = 48504460;
-      let P25yr = 7000000;
-      let S25yr = 6500000;
-      let A25yr = 6000000;
-      let E25yr = 10000000;
-      let ProtectionCost = 0;
-      document.getElementById("costOfDamage").textContent = "$" + dCost;
-      checkboxes.forEach((checkbox) => {
-        const checkboxId = checkbox.id;
-        const letter = checkboxId.split('-')[1]; // Extract the letter from the checkbox ID
-        switch (letter) {
-          case 'P':
-            ProtectionCost += P25yr;
-            break;
-          case 'S':
-            ProtectionCost += S25yr;
-            break;
-          case 'A':
-            ProtectionCost += A25yr;
-            break;
-          case 'E':
-            ProtectionCost += E25yr;
-            break;
-          default:
-            break;
-        }
-      });
-      damageCost = damageCost - ProtectionCost;
-        // displays the calculated damage cost in netDamageCost
-        document.getElementById("netDamageCost").textContent = "$" + damageCost;
-        document.getElementById("benefitsOfProtection").textContent = "$" + ProtectionCost;
-    } else if (floodlevel === "2yr"){
-        let damageCost = 244520;
-        // displays the calculated damage cost in netDamageCost
-        document.getElementById("netDamageCost").textContent = "$" + damageCost;
-        document.getElementById("costOfDamage").textContent = "$" + damageCost;
-        document.getElementById("benefitsOfProtection").textContent = "$" + 0;
-    }
+
 }
 
-// function for the calculator on the results.html page
+// function for the calculator on the results1.html and results2.html pages
 function calculator(){
-         let netDamage = document.getElementById("costOfDamage").value - document.getElementById("benefitsOfProtection").value;
-            document.getElementById("netCostOfDamage").textContent = "$" + netDamage;
-    }
+    let costOfDamage = parseInt(document.getElementById("costOfDamage").textContent.replace(/\$/, ""));
+    let benefitsOfProtection =  parseInt(document.getElementById("benefitsOfProtection").value) || 0;
+    let costOfProtection = parseInt(document.getElementById("costOfProtection").textContent.replace(/\$/, "")) || 0;
+
+    let netDamage = costOfDamage - benefitsOfProtection + costOfProtection
+    document.getElementById("netCostOfDamage").textContent = "$" + netDamage.toLocaleString();
+    console.log()
+}
