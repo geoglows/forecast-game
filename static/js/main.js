@@ -35,7 +35,7 @@ function nextDay(round) {
     saveCheckboxTable();
 
     // Display a customized alert with a button to proceed to the results page
-    let confirmation = confirm('Game Over! It appears your time has run out. Hit OK to see the results or ' +
+    let confirmation = confirm('GAME OVER! It appears your time has run out. Hit OK to see the results or ' +
       'Cancel to play again.');
     if (confirmation) {
       // Proceed to the results page
